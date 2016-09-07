@@ -30,7 +30,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             
             var account: String { return username }
             
-            var data: [String: AnyObject] {
+            var data: [String: Any] {
                 return ["password": password]
             }
         }

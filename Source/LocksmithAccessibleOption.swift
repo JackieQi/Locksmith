@@ -2,44 +2,44 @@ import Foundation
 
 // MARK: Accessible
 public enum LocksmithAccessibleOption: RawRepresentable {
-    case WhenUnlocked, AfterFirstUnlock, Always, WhenUnlockedThisDeviceOnly, AfterFirstUnlockThisDeviceOnly, AlwaysThisDeviceOnly, WhenPasscodeSetThisDeviceOnly
+    case whenUnlocked, afterFirstUnlock, always, whenUnlockedThisDeviceOnly, afterFirstUnlockThisDeviceOnly, alwaysThisDeviceOnly, whenPasscodeSetThisDeviceOnly
     
     public init?(rawValue: String) {
         switch rawValue {
         case String(kSecAttrAccessibleWhenUnlocked):
-            self = LocksmithAccessibleOption.WhenUnlocked
+            self = .whenUnlocked
         case String(kSecAttrAccessibleAfterFirstUnlock):
-            self = LocksmithAccessibleOption.AfterFirstUnlock
+            self = .afterFirstUnlock
         case String(kSecAttrAccessibleAlways):
-            self = LocksmithAccessibleOption.Always
+            self = .always
         case String(kSecAttrAccessibleWhenUnlockedThisDeviceOnly):
-            self = LocksmithAccessibleOption.WhenUnlockedThisDeviceOnly
+            self = .whenUnlockedThisDeviceOnly
         case String(kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly):
-            self = LocksmithAccessibleOption.AfterFirstUnlockThisDeviceOnly
+            self = .afterFirstUnlockThisDeviceOnly
         case String(kSecAttrAccessibleAlwaysThisDeviceOnly):
-            self = LocksmithAccessibleOption.AlwaysThisDeviceOnly
+            self = .alwaysThisDeviceOnly
         case String(kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly):
-            self = LocksmithAccessibleOption.WhenPasscodeSetThisDeviceOnly
+            self = .whenPasscodeSetThisDeviceOnly
         default:
-            self = LocksmithAccessibleOption.WhenUnlocked
+            self = .whenUnlocked
         }
     }
     
     public var rawValue: String {
         switch self {
-        case .WhenUnlocked:
+        case .whenUnlocked:
             return String(kSecAttrAccessibleWhenUnlocked)
-        case .AfterFirstUnlock:
+        case .afterFirstUnlock:
             return String(kSecAttrAccessibleAfterFirstUnlock)
-        case .Always:
+        case .always:
             return String(kSecAttrAccessibleAlways)
-        case .WhenPasscodeSetThisDeviceOnly:
+        case .whenPasscodeSetThisDeviceOnly:
             return String(kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly)
-        case .WhenUnlockedThisDeviceOnly:
+        case .whenUnlockedThisDeviceOnly:
             return String(kSecAttrAccessibleWhenUnlockedThisDeviceOnly)
-        case .AfterFirstUnlockThisDeviceOnly:
+        case .afterFirstUnlockThisDeviceOnly:
             return String(kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly)
-        case .AlwaysThisDeviceOnly:
+        case .alwaysThisDeviceOnly:
             return String(kSecAttrAccessibleAlwaysThisDeviceOnly)
         }
     }

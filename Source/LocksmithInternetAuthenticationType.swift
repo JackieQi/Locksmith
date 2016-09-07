@@ -1,48 +1,48 @@
 import Foundation
 
 public enum LocksmithInternetAuthenticationType: RawRepresentable {
-    case NTLM, MSN, DPA, RPA, HTTPBasic, HTTPDigest, HTMLForm, Default
+    case ntlm, msn, dpa, rpa, httpBasic, httpDigest, htmlForm, `default`
     
     public init?(rawValue: String) {
         switch rawValue {
         case String(kSecAttrAuthenticationTypeNTLM):
-            self = LocksmithInternetAuthenticationType.NTLM
+            self = .ntlm
         case String(kSecAttrAuthenticationTypeMSN):
-            self = LocksmithInternetAuthenticationType.MSN
+            self = .msn
         case String(kSecAttrAuthenticationTypeDPA):
-            self = LocksmithInternetAuthenticationType.DPA
+            self = .dpa
         case String(kSecAttrAuthenticationTypeRPA):
-            self = LocksmithInternetAuthenticationType.RPA
+            self = .rpa
         case String(kSecAttrAuthenticationTypeHTTPBasic):
-            self = LocksmithInternetAuthenticationType.HTTPBasic
+            self = .httpBasic
         case String(kSecAttrAuthenticationTypeHTTPDigest):
-            self = LocksmithInternetAuthenticationType.HTTPDigest
+            self = .httpDigest
         case String(kSecAttrAuthenticationTypeHTMLForm):
-            self = LocksmithInternetAuthenticationType.HTMLForm
+            self = .htmlForm
         case String(kSecAttrAuthenticationTypeDefault):
-            self = LocksmithInternetAuthenticationType.Default
+            self = .default
         default:
-            self = LocksmithInternetAuthenticationType.Default
+            self = .default
         }
     }
     
     public var rawValue: String {
         switch self {
-        case .NTLM:
+        case .ntlm:
             return String(kSecAttrAuthenticationTypeNTLM)
-        case .MSN:
+        case .msn:
             return String(kSecAttrAuthenticationTypeMSN)
-        case .DPA:
+        case .dpa:
             return String(kSecAttrAuthenticationTypeDPA)
-        case .RPA:
+        case .rpa:
             return String(kSecAttrAuthenticationTypeRPA)
-        case .HTTPBasic:
+        case .httpBasic:
             return String(kSecAttrAuthenticationTypeHTTPBasic)
-        case .HTTPDigest:
+        case .httpDigest:
             return String(kSecAttrAuthenticationTypeHTTPDigest)
-        case .HTMLForm:
+        case .htmlForm:
             return String(kSecAttrAuthenticationTypeHTMLForm)
-        case .Default:
+        case .default:
             return String(kSecAttrAuthenticationTypeDefault)
         }
     }

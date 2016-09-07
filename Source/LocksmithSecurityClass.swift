@@ -3,36 +3,36 @@ import Foundation
 // With thanks to http://iosdeveloperzone.com/2014/10/22/taming-foundation-constants-into-swift-enums/
 // MARK: Security Class
 public enum LocksmithSecurityClass: RawRepresentable {
-    case GenericPassword, InternetPassword, Certificate, Key, Identity
+    case genericPassword, internetPassword, certificate, key, identity
     
     public init?(rawValue: String) {
         switch rawValue {
         case String(kSecClassGenericPassword):
-            self = LocksmithSecurityClass.GenericPassword
+            self = .genericPassword
         case String(kSecClassInternetPassword):
-            self = LocksmithSecurityClass.InternetPassword
+            self = .internetPassword
         case String(kSecClassCertificate):
-            self = LocksmithSecurityClass.Certificate
+            self = .certificate
         case String(kSecClassKey):
-            self = LocksmithSecurityClass.Key
+            self = .key
         case String(kSecClassIdentity):
-            self = LocksmithSecurityClass.Identity
+            self = .identity
         default:
-            self = LocksmithSecurityClass.GenericPassword
+            self = .genericPassword
         }
     }
     
     public var rawValue: String {
         switch self {
-        case .GenericPassword:
+        case .genericPassword:
             return String(kSecClassGenericPassword)
-        case .InternetPassword:
+        case .internetPassword:
             return String(kSecClassInternetPassword)
-        case .Certificate:
+        case .certificate:
             return String(kSecClassCertificate)
-        case .Key:
+        case .key:
             return String(kSecClassKey)
-        case .Identity:
+        case .identity:
             return String(kSecClassIdentity)
         }
     }
