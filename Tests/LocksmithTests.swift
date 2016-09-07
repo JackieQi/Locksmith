@@ -17,8 +17,8 @@ class LocksmithTests: XCTestCase {
     
     func clear() {
         do {
-            try Locksmith.deleteDataForUserAccount(userAccount: userAccount, inService: service)
-            try Locksmith.deleteDataForUserAccount(userAccount: userAccount)
+            try Locksmith.deleteData(for: userAccount, inService: service)
+            try Locksmith.deleteData(for: userAccount)
         } catch {
             // no-op
         }
@@ -36,28 +36,28 @@ class LocksmithTests: XCTestCase {
         let data = ["some": "data"]
         try! Locksmith.saveData(data: data, forUserAccount: userAccount, inService: service)
         
-        let loaded = Locksmith.loadDataForUserAccount(userAccount: userAccount, inService: service)! as! TestingDictionaryType
+        let loaded = Locksmith.loadData(for: userAccount, inService: service)! as! TestingDictionaryType
         XCTAssertEqual(loaded, data)
         
-        try! Locksmith.deleteDataForUserAccount(userAccount: userAccount, inService: service)
+        try! Locksmith.deleteData(for: userAccount, inService: service)
         
         let otherData: TestingDictionaryType = ["something": "way different"]
         try! Locksmith.saveData(data: otherData, forUserAccount: userAccount, inService: service)
         
-        let loadedAgain = Locksmith.loadDataForUserAccount(userAccount: userAccount, inService: service)! as! TestingDictionaryType
+        let loadedAgain = Locksmith.loadData(for: userAccount, inService: service)! as! TestingDictionaryType
         XCTAssertEqual(loadedAgain, otherData)
         
         let updatedData = ["this update": "brings the ruckus"]
         try! Locksmith.updateData(data: updatedData, forUserAccount: userAccount, inService: service)
         
-        let loaded3 = Locksmith.loadDataForUserAccount(userAccount: userAccount, inService: service)! as! TestingDictionaryType
+        let loaded3 = Locksmith.loadData(for: userAccount, inService: service)! as! TestingDictionaryType
         
         XCTAssertEqual(loaded3, updatedData)
         
-        try! Locksmith.deleteDataForUserAccount(userAccount: userAccount, inService: service)
+        try! Locksmith.deleteData(for: userAccount, inService: service)
         
         try! Locksmith.updateData(data: ["some update": "data"], forUserAccount: userAccount, inService: service)
-        let updateResult = Locksmith.loadDataForUserAccount(userAccount: userAccount, inService: service)! as! [String: String]
+        let updateResult = Locksmith.loadData(for: userAccount, inService: service)! as! [String: String]
         XCTAssertEqual(updateResult, ["some update": "data"])
     }
     
@@ -65,21 +65,21 @@ class LocksmithTests: XCTestCase {
         let data = ["some": "data"]
         try! Locksmith.saveData(data: data, forUserAccount: userAccount)
         
-        let loaded = Locksmith.loadDataForUserAccount(userAccount: userAccount)! as! TestingDictionaryType
+        let loaded = Locksmith.loadData(for: userAccount)! as! TestingDictionaryType
         XCTAssertEqual(loaded, data)
         
-        try! Locksmith.deleteDataForUserAccount(userAccount: userAccount)
+        try! Locksmith.deleteData(for: userAccount)
         
         let otherData: TestingDictionaryType = ["something": "way different"]
         try! Locksmith.saveData(data: otherData, forUserAccount: userAccount)
         
-        let loadedAgain = Locksmith.loadDataForUserAccount(userAccount: userAccount)! as! TestingDictionaryType
+        let loadedAgain = Locksmith.loadData(for: userAccount)! as! TestingDictionaryType
         XCTAssertEqual(loadedAgain, otherData)
         
         let updatedData = ["this update": "brings the ruckus"]
         try! Locksmith.updateData(data: updatedData, forUserAccount: userAccount)
         
-        let loaded3 = Locksmith.loadDataForUserAccount(userAccount: userAccount)! as! TestingDictionaryType
+        let loaded3 = Locksmith.loadData(for: userAccount)! as! TestingDictionaryType
         
         XCTAssertEqual(loaded3, updatedData)
     }
@@ -161,7 +161,7 @@ class LocksmithTests: XCTestCase {
         let delete = DeleteGenericPassword(account: userAccount, service: service)
         try! delete.deleteFromSecureStore()
         
-        let d = Locksmith.loadDataForUserAccount(userAccount: userAccount, inService: service)
+        let d = Locksmith.loadData(for: userAccount, inService: service)
         XCTAssertNil(d)
     }
     
